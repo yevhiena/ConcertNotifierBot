@@ -40,6 +40,6 @@ public class UpcomingEventsHandler implements InputMessageHandler {
         for (SendMessage mes : messages) {
             concertNotifierBot.send(mes);
         }
-        return new SendMessage(chatId, "That's all we managed to find");
+        return new SendMessage(chatId, "Your top artist's concerts are listed above");
     }
 }

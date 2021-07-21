@@ -46,6 +46,10 @@ public class UpcomingEventsReplyService implements MultipleReplyCommandService {
             for (String artist : artists) {
                 concertDtos.addAll(concertService.findConcertsByArtist(artist));
             }
+            if (concertDtos.isEmpty()){
+                response.add(new SendMessage(chatId, "Your top artists haven't published concerts yet. Check later"));
+                return response;
+            }
             for (ConcertDto concert : concertDtos) {
                 SendMessage reply = new SendMessage();
                 reply.setChatId(chatId);
