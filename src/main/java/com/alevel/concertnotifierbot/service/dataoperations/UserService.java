@@ -10,6 +10,7 @@ import java.util.Map;
 public interface UserService {
    String getUsersToken(long chatId) throws DataNotFoundException;
    boolean isExist(long chatId);
+   boolean isAdmin(long chatId) throws DataNotFoundException;
    long saveUser(long chatId, String token);
    void updateUserAddConcert(long chatId, long concertId) throws DataNotFoundException;
    void updateUserDeleteConcert(long chatId, long concertId) throws DataNotFoundException;

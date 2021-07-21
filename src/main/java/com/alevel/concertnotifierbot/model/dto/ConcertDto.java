@@ -1,9 +1,11 @@
 package com.alevel.concertnotifierbot.model.dto;
 
 
-import java.time.Instant;
+import lombok.EqualsAndHashCode;
+
 import java.util.Date;
 
+@EqualsAndHashCode
 public class ConcertDto {
 
     private long id;

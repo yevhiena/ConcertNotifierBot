@@ -39,7 +39,7 @@ public class TelegramFacade {
 
             return handleCallback(update.getCallbackQuery());
         }
-        return new SendMessage(update.getMessage().getChatId(), "Unknown command");
+        return null;
     }
 
     private SendMessage handleInputMessage(Message message) {
@@ -61,8 +61,13 @@ public class TelegramFacade {
             case "/events":
                 botState = BotState.SHOW_FUTURE_EVENTS;
                 break;
+            case "/add_event":
+                botState = BotState.ADD_EVENT;
+                break;
             default:
-                return new SendMessage(chatId, "Unknown command.");
+                if(userDataCache.getUsersCurrentBotState(userId).equals(BotState.ADD_EVENT))
+                    botState = BotState.FILLING_EVENT;
+                else return new SendMessage(chatId, "Unknown command.");
         }
 
         userDataCache.setUsersCurrentBotState(userId, botState);

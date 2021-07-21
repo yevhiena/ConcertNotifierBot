@@ -37,15 +37,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public boolean isAdmin(long chatId) throws DataNotFoundException {
+        User user = findUser(chatId);
+        return user.isAdmin();
+    }
+
+    @Override
     public long saveUser(long chatId, String token) {
         Optional<User> user = userRepository.findUserByChatId(chatId);
         if (user.isEmpty()){
             User savedUser = userRepository.save(new User(chatId, token));
+            log.info("User saved with id:{}", savedUser.getId());
             return savedUser.getId();
         }else {
             user.get().setRefreshToken(token);
-            userRepository.save(user.get());
-            return user.get().getId();
+            long id = userRepository.save(user.get()).getId();
+            log.info("Update token for user with id:{}", id);
+            return id;
         }
     }
 
@@ -55,6 +63,7 @@ public class UserServiceImpl implements UserService {
         User user = findUser(chatId);
         user.getConcerts().add(concert);
         userRepository.save(user);
+        log.info("Update user with id:{}. Add concert with id{}", concert.getId(), user.getId());
     }
 
     @Override
@@ -63,6 +72,7 @@ public class UserServiceImpl implements UserService {
         User user = findUser(chatId);
         user.getConcerts().remove(concert);
         userRepository.save(user);
+        log.info("Update user with id:{}. Delete concert with id{}", concert.getId(), user.getId());
     }
 
     @Override

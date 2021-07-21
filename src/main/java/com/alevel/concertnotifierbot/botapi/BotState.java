@@ -6,5 +6,6 @@ public enum BotState {
     SHOW_HELP_MENU,
     SHOW_SUBSCRIPTIONS,
     SHOW_FUTURE_EVENTS,
-    SHOW_PAST_EVENTS
+    ADD_EVENT,
+    FILLING_EVENT
 }

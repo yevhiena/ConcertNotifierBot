@@ -41,6 +41,6 @@ public class SubscriptionsHandler implements InputMessageHandler {
         for (SendMessage mes : messages) {
             concertNotifierBot.send(mes);
         }
-        return new SendMessage(chatId, "That's all your concerts");
+        return new SendMessage(chatId, "Subscriptions are listed above");
     }
 }

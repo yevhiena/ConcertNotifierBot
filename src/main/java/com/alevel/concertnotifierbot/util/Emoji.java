@@ -16,7 +16,8 @@ public enum Emoji {
     SUBSCRIBE(EmojiParser.parseToUnicode(":heavy_check_mark:")),
     NOTIFICATION_BELL(EmojiParser.parseToUnicode(":bell:")),
     HEADPHONES(EmojiParser.parseToUnicode(":headphones:")),
-    QUESTION(EmojiParser.parseToUnicode(":grey_question:"));
+    QUESTION(EmojiParser.parseToUnicode(":grey_question:")),
+    EXCLAMATION(EmojiParser.parseToUnicode(":grey_exclamation:"));
 
     private String emojiName;
 

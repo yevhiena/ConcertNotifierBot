@@ -8,4 +8,6 @@ public interface ConcertService {
     List<ConcertDto> findConcertsByArtist(String name);
 
     List<ConcertDto> findAllUsersConcerts(long id);
+
+    boolean save(ConcertDto concertDto);
 }

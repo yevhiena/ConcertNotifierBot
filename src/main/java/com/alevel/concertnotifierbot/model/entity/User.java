@@ -1,7 +1,6 @@
 package com.alevel.concertnotifierbot.model.entity;
 
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,6 +27,9 @@ public class User {
 
     @Column(name = "token", nullable = false)
     private String refreshToken;
+
+    @Column(name = "is_admin", nullable = false)
+    private boolean isAdmin;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = {
             CascadeType.PERSIST,
